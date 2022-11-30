@@ -23,7 +23,7 @@
 #define PUERTO 17278
 #define ADDRNOTFOUND	0xffffffff	/* return address for unfound host */
 #define BUFFERSIZE	1024	/* maximum size of packets to be received */
-#define TAM_BUFFER 10
+#define TAM_BUFFER 150
 #define MAXHOST 128
 
 extern int errno;
@@ -375,6 +375,7 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in)
 			 */
 		sleep(1);
 			/* Send a response back to the client. */
+		fprintf(stdout,"%s\n",buf);
 		if (send(s, buf, TAM_BUFFER, 0) != TAM_BUFFER) errout(hostname);
 	}
 
