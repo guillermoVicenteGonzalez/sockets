@@ -19,6 +19,7 @@
 
 extern int errno;
 
+int comprobarCorchetes(char *sender);
 void serverTCP(int s, struct sockaddr_in clientaddr_in);
 void errout(char *hostname)
 {
@@ -34,8 +35,10 @@ typedef struct mailState{
 }mailState;
 
 typedef struct mail{
-	char emisor[100];
-	char mensaje[100];
+	char emisor[TAM_BUFFER];
+	char mensaje[TAM_BUFFER];
+	char receptores[10][TAM_BUFFER];
+	int nReceptores;
 }mail;
 
 int main(int argc, char  *argv[])
@@ -114,6 +117,7 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in){
     mail miMail;
 
     //tratamiento de cadenas
+    int receptores = 0;
     int contador = 0;
     char linea[100];
     char *palabra;
@@ -165,50 +169,126 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in){
 /***************************************************************
  * TRATAMIENTO DE CADENAS
  * *************************************************************/
+		//falta hacer que no se repitan pasos y que se hagan todos en orden con las flags
+
+		//primero compruebo que puñetas he recibido
+		fprintf(stdout,"cadena recibida: %s\n",buf);
+
+
+		//compruebo la primera palabra del mensaje enviado.
 		palabra = strtok(buf," ");
 		if(strcmp(palabra,"HELO") == 0){
 			fprintf(stdout,"HELO recibido\n");
-			fprintf(stdout,"cadena recibida: %s\n",buf);
+			//fprintf(stdout,"cadena recibida: %s\n",buf);
 			palabra = strtok(NULL, " ");
 			if(palabra != NULL){
 				//deberia comprobar si el sender es valido
 				fprintf(stdout,"palabra 2: %s",palabra);
-				strcpy(miMail.emisor,palabra);
+				//comprobamos si hay mas palabras, en cuyo caso mandamos error de sintaxis
 				palabra = strtok(NULL, " ");
 				if(palabra != NULL){
 					//error. Solo se espera un campo.
 					//limpio estructuras y devuelvo error.
+
+					strcpy(buf,"500 Error de sintaxis\n");
+					fprintf(stdout,buf);
+
 				}else{
-					strcpy(buf,"500");
+					strcpy(buf,"250 OK");
 				}
 			}
 			//solo ha de tener 2 campos.
+
+		//MAIL	
 		}else if(strcmp(palabra,"MAIL") == 0){
 			fprintf(stdout,"MAIL recibido\n");
-			fprintf(stdout,"cadena recibida: %s\n",buf);
-			strcpy(buf,"200");
+			palabra = strtok(NULL, " ");
+			if(strcmp(palabra,"FROM:") == 0){
+				fprintf(stdout, "From recibido, bien\n");
+				palabra = strtok(NULL, " ");
+				if(palabra != NULL){
+					if(comprobarCorchetes(palabra) == 1){
+						strcpy(miMail.emisor,palabra);
+						fprintf(stdout, "emisor: %s",miMail.emisor);
+						//falta comprobar arrobas
+						strcpy(buf,"250 OK\n");
+						fprintf(stdout,buf);
+					}else{
+						strcpy(buf,"500 Error de sintaxis\n");
+						fprintf(stdout,buf);
+					}
+				}
+			}else{
+				strcpy(buf,"500 Error de sintaxis\n");
+				fprintf(stdout,buf);
+			}
+
+		//RCPT
 		}else if(strcmp(palabra,"RCPT") == 0){
 			fprintf(stdout,"RCPT recibido\n");
-			fprintf(stdout,"cadena recibida: %s\n",buf);
-			strcpy(buf,"200");
-		}else if(strcmp(palabra,"DATA") == 0){
+			palabra = strtok(NULL," ");
+			if(strcmp(palabra,"TO:") == 0){
+				palabra = strtok(NULL, " ");
+				if(comprobarCorchetes(palabra)){
+					//no haria falta guardarlos pero..
+					//strcpy(miMail.receptores[miMail.nReceptores],palabra);
+					strcpy(buf,"250 OK\n");
+					fprintf(stdout,buf);
+				}else{
+					strcpy(buf,"500 Error de sintaxis\n");
+					fprintf(stdout,buf);
+				}
+
+			}else{
+				strcpy(buf,"500 Error de sintaxis\n");
+				fprintf(stdout,buf);
+			}
+		///DATA
+		}else if(strcmp(palabra,"DATA\n") == 0){
 			fprintf(stdout,"DATA recibido\n");
-			fprintf(stdout,"cadena recibida: %s\n",buf);
+
+			//envio respuesta
+			strcpy(buf,"354 Comenzando con el texto del correo, finalice con .");
+			fprintf(stdout, "enviando respuesta: %s\n\n",buf);
+			if (send(s, buf, TAM_BUFFER, 0) != TAM_BUFFER) fprintf(stderr,"error");errout(hostname);
+
+			
+			//espero respuesta de texto
+			//while ((0 == strcmp(buf, ".\n")) && (len = recv(s, buf, TAM_BUFFER, 0))) {
+			while (len = recv(s, buf, TAM_BUFFER, 0)){
+				printf("entro en el bucle");
+				if (len == -1) errout(hostname);
+
+				//posibilidad remota de error
+				while (len < TAM_BUFFER) {
+					len1 = recv(s, &buf[len], TAM_BUFFER-len, 0);
+					if (len1 == -1) errout(hostname);
+					len += len1;
+				}
+
+				if(strcmp(buf,".\n") == 0){
+					printf("entcontrado el punto");
+				}
+			}
+			printf("salgo del bucle"); 
 			strcpy(buf,"200");
+
+		//QUIT
 		}else if(strcmp(palabra, "QUIT") == 0){
 			fprintf(stdout,"QUIT recibido\n");
 			fprintf(stdout,"cadena recibida: %s\n",buf);
-			strcpy(buf,"200");			
+			strcpy(buf,"200");
+
+		//ERROR			
 		}else{
 			fprintf(stdout, "Error de sintaxis\n");
-			fprintf(stdout,"cadena recibida: %s\n",buf);
 			strcpy(buf,"500");		
 		}
 
 
 		//strcpy(buf,"500");
 		//strcpy(buf,"respuesta");
-		fprintf(stdout, "enviando respuesta\n\n");
+		fprintf(stdout, "enviando respuesta: %s\n\n",buf);
 		if (send(s, buf, TAM_BUFFER, 0) != TAM_BUFFER) fprintf(stderr,"error");//errout(hostname);
 	}
 
@@ -219,12 +299,18 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in){
 
 		/* Log a finishing message. */
 	time (&timevar);
-		/* The port number must be converted first to host byte
-		 * order before printing.  On most hosts, this is not
-		 * necessary, but the ntohs() call is included here so
-		 * that this program could easily be ported to a host
-		 * that does require it.
-		 */
 	printf("Completed %s port %u, %d requests, at %s\n",
 		hostname, ntohs(clientaddr_in.sin_port), reqcnt, (char *) ctime(&timevar));
+}
+
+//comprueba que los correos lleven corchetes
+int comprobarCorchetes(char *sender){
+	int i=0;
+	for(i=0;sender[i]!='\0';++i);
+	//printf("\n[0]:%c [%d]:%c\n",sender[0],i-2,sender[i-2]);
+	//-2 porque los ultimos caracteres son \0 y \n
+	if(sender[0] == '<' && sender[i-2] == '>')
+		return 1;
+	else
+		return 0;
 }

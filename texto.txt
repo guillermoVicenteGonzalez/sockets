@@ -1,2 +1,11 @@
-HELO usal.es
+HELO usal.es otrasdas
+MAIL FROM: <fulano>
+RCPT TO: <guillermo>
+RCPT TO: guillemro
 otra cadena
+DATA
+asdasdasd
+asdasd
+asda
+.
+
