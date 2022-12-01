@@ -14,7 +14,7 @@
 #define PUERTO 17278
 #define ADDRNOTFOUND	0xffffffff	/* return address for unfound host */
 #define BUFFERSIZE	1024	/* maximum size of packets to be received */
-#define TAM_BUFFER 150
+#define TAM_BUFFER 512
 #define MAXHOST 128
 
 extern int errno;
@@ -24,6 +24,7 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in);
 void errout(char *hostname)
 {
 	printf("Connection with %s aborted on error\n", hostname);
+	perror("send: ");
 	exit(1);     
 }
 
@@ -214,12 +215,12 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in){
 						strcpy(buf,"250 OK\n");
 						fprintf(stdout,buf);
 					}else{
-						strcpy(buf,"500 Error de sintaxis\n");
+						strcpy(buf,"500 Error de sintaxis\r\n");
 						fprintf(stdout,buf);
 					}
 				}
 			}else{
-				strcpy(buf,"500 Error de sintaxis\n");
+				strcpy(buf,"500 Error de sintaxis\r\n");
 				fprintf(stdout,buf);
 			}
 
@@ -250,14 +251,14 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in){
 			//envio respuesta
 			strcpy(buf,"354 Comenzando con el texto del correo, finalice con .");
 			fprintf(stdout, "enviando respuesta: %s\n\n",buf);
-			if (send(s, buf, TAM_BUFFER, 0) != TAM_BUFFER) fprintf(stderr,"error");errout(hostname);
-
 			
-			//espero respuesta de texto
-			//while ((0 == strcmp(buf, ".\n")) && (len = recv(s, buf, TAM_BUFFER, 0))) {
-			while (len = recv(s, buf, TAM_BUFFER, 0)){
-				printf("entro en el bucle");
-				if (len == -1) errout(hostname);
+			if (send(s, buf, TAM_BUFFER, 0) != TAM_BUFFER){
+				fprintf(stderr,"error");
+				errout(hostname);
+			}
+
+			while(len = recv(s, buf, TAM_BUFFER, 0)){
+				if (len == -1) errout(hostname); 
 
 				//posibilidad remota de error
 				while (len < TAM_BUFFER) {
@@ -266,23 +267,35 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in){
 					len += len1;
 				}
 
-				if(strcmp(buf,".\n") == 0){
-					printf("entcontrado el punto");
+				//incrementamos el nuero de requests y espero 
+				reqcnt++;
+				sleep(1);
+				fprintf(stdout, "data:%s",buf);
+
+				if(strcmp(buf, ".\n") == 0){
+					strcpy(buf,"250 Data finalizado");
+					break;
+				}else{
+					if (send(s, "250 Data OK", TAM_BUFFER, 0) != TAM_BUFFER){
+						fprintf(stderr,"error");
+						errout(hostname);
+					}
 				}
 			}
-			printf("salgo del bucle"); 
-			strcpy(buf,"200");
+
 
 		//QUIT
 		}else if(strcmp(palabra, "QUIT") == 0){
 			fprintf(stdout,"QUIT recibido\n");
 			fprintf(stdout,"cadena recibida: %s\n",buf);
-			strcpy(buf,"200");
+			strcpy(buf,"221 Cierre de la conexion");
 
-		//ERROR			
+		//ERROR	
+		}else if(strcmp(palabra,"\n") == 0){
+
 		}else{
 			fprintf(stdout, "Error de sintaxis\n");
-			strcpy(buf,"500");		
+			strcpy(buf,"500 Error de sintaxis");		
 		}
 
 
