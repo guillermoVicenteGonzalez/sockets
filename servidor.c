@@ -19,6 +19,7 @@
 
 extern int errno;
 
+int comprobarCorreo(char *sender);
 int comprobarCorchetes(char *sender);
 void serverTCP(int s, struct sockaddr_in clientaddr_in);
 void errout(char *hostname)
@@ -85,6 +86,7 @@ int main(int argc, char  *argv[])
 		exit(EXIT_FAILURE);
 	}
 
+	
 	while(1){
 		if(-1 == (s= accept(sListen, (struct sockaddr *) &clientData, &sockaddrSize))){
 			perror("accept");
@@ -287,8 +289,8 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in){
 		//QUIT
 		}else if(strcmp(palabra, "QUIT") == 0){
 			fprintf(stdout,"QUIT recibido\n");
-			fprintf(stdout,"cadena recibida: %s\n",buf);
-			strcpy(buf,"221 Cierre de la conexion");
+			strcpy(buf,"221 Cerrando servicio");
+			//break;
 
 		//ERROR	
 		}else if(strcmp(palabra,"\n") == 0){
@@ -326,4 +328,22 @@ int comprobarCorchetes(char *sender){
 		return 1;
 	else
 		return 0;
+}
+
+int comprobarCorreo(char *sender){
+	int flagArroba = 0;
+	int flagPunto = 0;
+	int resultado = 0;
+
+	for(int i=0;sender[i]!='\0';i++){
+		if(sender[i] == '@' && flagPunto == 0 && flagArroba == 0){
+			flagArroba =1;
+		}
+		if(sender == '.' ){
+			if(flagArroba == true && flagPunto == false && sender[i+1] != '\0')
+				resultado=1;
+			else if(flagPunto == true)
+				resultado=0;
+		}
+	}
 }

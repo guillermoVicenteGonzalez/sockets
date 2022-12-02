@@ -8,3 +8,4 @@ asdasdasd
 asdasd
 asda
 .
+QUIT
