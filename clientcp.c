@@ -18,7 +18,7 @@
 #include <time.h>
 
 #define PUERTO 17278
-#define TAM_BUFFER 150
+#define TAM_BUFFER 512
 
 typedef struct respuesta{
 	int codigo;
@@ -101,6 +101,9 @@ int main(int argc, char  *argv[])
 	do{
 		fgets(linea,100,fp);
 		//mando el mensaje
+		if(strcmp(linea,"\n") == 0){
+			printf("solo en blanco. No envio"); 
+		}
 		fprintf(stdout,"mandando: %s",linea);
 		if(send(s,linea,TAM_BUFFER,0) != TAM_BUFFER){
 			fprintf(stderr, "%s: Conexion abortada al producirse un error", argv[0]);

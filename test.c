@@ -26,6 +26,17 @@ int main(int argc, char *argv[])
       palabra = strtok(NULL, " ");
    }
 
+   while(!feof(fp)){
+      fgets(linea,100,fp);
+      printf("\n%s\n",linea);
+      if(strcmp(linea,"DATA\n") == 0){
+         printf("encontrado data");
+      }
+      if(strcmp(linea,".\n")==0){
+         printf("\npunto\n");
+      }
+   }
+
    fclose(fp);
    printf("\n");
    return 0;
