@@ -1,7 +1,8 @@
 HELO usal.es otrasdas
-MAIL FROM: <fulano>
+MAIL FROM: <fulano@gmail.com>
 RCPT TO: <guillermo>
 RCPT TO: guillemro
+RCPT TO: <juanito@gmail.com>
 otra cadena
 DATA
 asdasdasd
