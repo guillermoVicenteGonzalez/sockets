@@ -51,8 +51,10 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-#propio
 
+#propio
+.log
+.txt
 *
 !*.*
 !LICENSE

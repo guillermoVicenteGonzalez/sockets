@@ -96,6 +96,9 @@ int main(int argc, char  *argv[])
 	printf("Connected to %s on port %u at %s\n",
 	argv[1], ntohs(myaddr_in.sin_port), (char *) ctime(&timevar));
 
+	//antes de empezar tengo que recibir el ready del servidor
+	recv(s, buf, TAM_BUFFER, 0);
+	fprintf(stdout,"respuesta: %s\n\n",buf);
 
 	//bucle de lectura de fichero
 	do{
