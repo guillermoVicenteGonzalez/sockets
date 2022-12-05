@@ -28,8 +28,9 @@ typedef struct respuesta{
 int main(int argc, char  *argv[])
 {
 	FILE *fp;
-	char linea[100];
-	char * ruta = argv[2]; //ruta del fichero a abrir
+	char linea[TAM_BUFFER];
+	char * ruta = argv[3]; //ruta del fichero a abrir
+	int protocolo; //0 = tcp 1 = udp
 	int s; //descriptor del socket
 	struct sockaddr_in myaddr_in; //local socket address
 	struct sockaddr_in servaddr_in; //server socket addres
@@ -38,14 +39,24 @@ int main(int argc, char  *argv[])
 	int addrlen, i, j, errcode;
 	long timevar;
 
-	if(argc != 3){
-		fprintf(stderr, "Uso: ./%s <server> <ordenes.txt>\n",argv[0]);
+	if(argc != 4){
+		fprintf(stderr, "Uso: ./%s <server> <Protocolo> <ordenes.txt>\n",argv[0]);
 		exit(1);
 	}
 
 	//abro el fichero
 	if(NULL == (fp = fopen(ruta,"r"))){
 		fprintf(stderr,"no se puede abrir el fichero");
+		exit(1);
+	}
+
+	//verifico el protocolo
+	if(strcmp(argv[2], "TCP") == 0){
+		protocolo = 0;
+	}else if(strcmp(argv[2],"UDP") == 0){
+		protocolo = 1;
+	}else{
+		fprintf(stderr,"se ha de especificar el protocolo\n Uso: ./%s <server> <Protocolo> <ordenes.txt>\n",argv[0]);
 		exit(1);
 	}
 
@@ -67,6 +78,7 @@ int main(int argc, char  *argv[])
 	memset (&hints, 0, sizeof (hints)); //ponemos a 0 cada byte del puntero
     hints.ai_family = AF_INET; //
 
+    //obtengo la ip
     errcode = getaddrinfo (argv[1], NULL, &hints, &res); 
     if(errcode !=0){
     	fprintf(stderr, "%s: No es posible resolver la ip");
@@ -102,7 +114,7 @@ int main(int argc, char  *argv[])
 
 	//bucle de lectura de fichero
 	do{
-		fgets(linea,100,fp);
+		fgets(linea,TAM_BUFFER,fp);
 		//mando el mensaje
 		if(strcmp(linea,"\n") == 0){
 			printf("solo en blanco. No envio"); 
@@ -133,55 +145,7 @@ int main(int argc, char  *argv[])
 		fprintf(stderr, "%s: unable to shutdown socket\n", argv[0]);
 		exit(1);
 	}
-
-
-	/*
-	//for(int i=0;i<2;i++){
-		printf("mando hola\n");
-		if(send(s,"HELO",TAM_BUFFER,0) != TAM_BUFFER){
-			fprintf(stderr, "%s: Conexion abortada al producirse un error", argv[0]);
-			exit(1);
-		}
-
-		while (i = recv(s, buf, TAM_BUFFER, 0)) {
-			if (i == -1) {
-	            perror(argv[0]);
-				fprintf(stderr, "%s: error reading result\n", argv[0]);
-				exit(1);
-			}
-
-			//para errores
-			while (i < TAM_BUFFER) {
-				j = recv(s, &buf[i], TAM_BUFFER-i, 0);
-				if (j == -1) {
-	                     perror(argv[0]);
-				         fprintf(stderr, "%s: error reading result\n", argv[0]);
-				         exit(1);
-	               }
-				i += j;
-			}
-
-			//printf("\n%d\n",strcmp(buf,"respuesta"));
-			if(strcmp(buf,buf) == 0){
-				printf("recibida respuesta: %s\n",buf);
-				if(send(s,"HELO",TAM_BUFFER,0) != TAM_BUFFER){
-					fprintf(stderr, "%s: Conexion abortada al producirse un error", argv[0]);
-					exit(1);
-				}
-				printf("mando otro mensaje\n");
-				//Print out message indicating the identity of this reply.
-			}else{
-				fprintf(stdout,"Sintaxis: %s",buf);
-			}
-		}
-
-		if (shutdown(s, 1) == -1) {
-			perror(argv[0]);
-			fprintf(stderr, "%s: unable to shutdown socket\n", argv[0]);
-			exit(1);
-		}
-	//}*/
-
+	
 	printf("\n");
 	return 0;
 }

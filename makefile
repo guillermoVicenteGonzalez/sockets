@@ -1,4 +1,7 @@
-programa: clientcp servidor
+programa: clientcp servidor clientudp
+
+clientudp: clientudp.c
+	gcc clientudp.c -o clientudp
 
 clientcp: clientcp.c
 	gcc clientcp.c -o clientcp
