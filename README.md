@@ -52,8 +52,8 @@
  			- [ ] tratamiento completo de cadenas
  			- [ ] alarmas e intentos
  		- [ ] concurrencia
- 			- [ ] socket de escucha
- 			- [ ] proceso hijo
+ 			- [x] socket de escucha
+ 			- [x] proceso hijo
  			- [ ] salida ordenada
  		- [ ] fichero de log
  			- [ ] funcionalidad basica

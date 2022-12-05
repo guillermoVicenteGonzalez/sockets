@@ -58,7 +58,7 @@ int main(int argc, char  *argv[])
 {
 	FILE *log;
 	//sListen es el socket TCP
-	int sListen, s, s_UDP;
+	int sListen, s, s_UDP, l_UDP; //listenUdp como socket udp adicional 
 	int port = PUERTO;
 
 	//clientData i serverData sin myAddr_in y clientaddr_in
@@ -159,6 +159,7 @@ int main(int argc, char  *argv[])
             }
 
             while(!FIN){
+            	//printf("\nvuelvo al bucle\n------------------------------\n");
             	/* Meter en el conjunto de sockets los sockets UDP y TCP */
             	FD_ZERO(&readmask);
             	FD_SET(sListen, &readmask);
@@ -217,7 +218,37 @@ int main(int argc, char  *argv[])
 		                * null terminated.
 		                */
 		                buffer[cc]='\0';
-		                serverUDP (s_UDP, buffer, clientData);                		
+		                switch(fork()){
+		                	case -1:
+		                		perror("fork: ");
+		                		exit(1);
+
+		                	case 0:
+		                		//proceso hijo
+		                		//creo el socket adicional para concurrencia
+		                		if(-1 == (l_UDP = socket(AF_INET, SOCK_DGRAM,0))){
+		                			perror("socket: ");
+		                			exit(1);
+		                		}
+		                		close(sListen);
+		                		close(s_UDP);
+		                		//relleno las estructuras
+		                		serverData.sin_family = AF_INET;
+		                		serverData.sin_addr.s_addr = INADDR_ANY;
+		                		serverData.sin_port = 0; //puerto efimero
+
+		                		//bindeo el socket
+		                		if(-1 == bind(l_UDP, (const struct sockaddr *) &serverData, sizeof(serverData))){
+		                			perror("bind: ");
+		                			exit(1);
+		                		}
+
+				                serverUDP (l_UDP, buffer, clientData);
+				                exit(0);
+
+				            default:
+				            	                		
+		                }               		
                 	}	            	
 	            } 
             } //fin del bucle infinito
@@ -553,13 +584,27 @@ void serverUDP(int s, char * buffer, struct sockaddr_in clientaddr_in){
     char string[TAM_BUFFER];
     char *palabra;
     int final = 0;
+    long timevar;
+    char hostname[MAXHOST];
+    int status;
+	int reqcnt = 0;		//numero de requests
 
     struct addrinfo hints, *res;
 
 	int addrlen;
     
+    //abro el fichero de log
     fp = fopen("prueba.txt","a");
    	addrlen = sizeof(struct sockaddr_in);
+
+   	status = getnameinfo((struct sockaddr *)&clientaddr_in,sizeof(clientaddr_in),
+                           hostname,MAXHOST,NULL,0,0);
+
+	if(status){
+		//lainformacion no esta disponible. 
+		if (inet_ntop(AF_INET, &(clientaddr_in.sin_addr), hostname, MAXHOST) == NULL)
+            	perror(" inet_ntop \n");
+	}
 
     memset (&hints, 0, sizeof (hints));
     hints.ai_family = AF_INET;
@@ -603,10 +648,13 @@ void serverUDP(int s, char * buffer, struct sockaddr_in clientaddr_in){
 			exit(1);
 		}else{
 			fprintf(stdout,"cadena recibida: %s\n",string);
+			reqcnt++;
 		}
 		/***************************************************************
 		 * TRATAMIENTO DE CADENAS
 		 * *************************************************************/
+
+		sleep(1);
 
 		//divido la cadena en palabras separadas por espacios
 		palabra = strtok(string," ");
@@ -637,7 +685,7 @@ void serverUDP(int s, char * buffer, struct sockaddr_in clientaddr_in){
 			fprintf(stdout, "QUIT recibido\n");
 			strcpy(string, "QUIT deuvelto");
 			final = 1;
-			break;
+			//break;
 
 		}else{
 			fprintf(stdout,"OTRO\n");
@@ -652,6 +700,22 @@ void serverUDP(int s, char * buffer, struct sockaddr_in clientaddr_in){
     		exit(1);
     	}
     }
+
+    close(s);
     fprintf(stdout,"saliendo del bucle\n");
+    time (&timevar);
+	sprintf(string,"Completed %s port %u, %d requests, at %s------------------------------------------------------------------------------\n",
+		hostname, ntohs(clientaddr_in.sin_port), reqcnt, (char *) ctime(&timevar));
+
+	fprintf(stdout,string);
+
+	/*
+	nc = sendto (s, string, TAM_BUFFER,0, (struct sockaddr *)&clientaddr_in, addrlen);
+	if(nc == -1){
+		perror("server udp");
+		fprintf(stderr,"error enviando");
+		exit(1);
+	}*/
+
     exit(0);   
 }
