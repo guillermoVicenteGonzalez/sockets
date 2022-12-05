@@ -528,3 +528,57 @@ MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 P
 
 Completed localhost port 48774, 12 requests, at Mon Dec  5 12:24:35 2022
 ------------------------------------------------------------------------------
+
+Startup from localhost port 39492 at Mon Dec  5 14:20:38 2022
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO usal.es otrasdas
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+
+MESSAGE SEND: 500 Error de sintaxis
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+MESSAGE RECEIVE: MAIL FROM: <fulano@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+MESSAGE RECEIVE: RCPT TO: <guillermo>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+MESSAGE RECEIVE: RCPT TO: guillemro
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+MESSAGE RECEIVE: otra cadena
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+
+MESSAGE SEND: 250 Data finalizado TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 39492
+
+Completed localhost port 39492, 12 requests, at Mon Dec  5 14:20:50 2022
+------------------------------------------------------------------------------
