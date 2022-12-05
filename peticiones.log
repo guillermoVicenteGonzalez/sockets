@@ -215,3 +215,316 @@ MESSAGE SEND: 500 Error de sintaxis TO: hostname: guille-manjaro address: 192.16
 
 Completed guille-manjaro port 42816, 12 requests, at Sun Dec  4 16:52:14 2022
 ----------------------------------------------------------------------------
+
+Startup from guille-manjaro port 48966 at Sun Dec  4 17:01:10 2022
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO usal.es otrasdas
+ FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+
+MESSAGE SEND: 500 Error de sintaxis
+ TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+MESSAGE RECEIVE: MAIL FROM: <fulano@gmail.com>
+ FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+MESSAGE RECEIVE: RCPT TO: <guillermo>
+ FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+MESSAGE RECEIVE: RCPT TO: guillemro
+ FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+MESSAGE RECEIVE: otra cadena
+ FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+
+MESSAGE SEND: 250 Data finalizado TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+MESSAGE RECEIVE: QUIT FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 48966
+
+Completed guille-manjaro port 48966, 12 requests, at Sun Dec  4 17:01:22 2022
+------------------------------------------------------------------------------
+
+Startup from guille-manjaro port 34970 at Sun Dec  4 17:09:27 2022
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO usal.es otrasdas
+ FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 34970
+
+
+MESSAGE SEND: 500 Error de sintaxis
+ TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 34970
+
+MESSAGE RECEIVE: MAIL FROM: <fulano@gmail.com>
+ FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 34970
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 34970
+
+MESSAGE RECEIVE: RCPT TO: <guillermo>
+ FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 34970
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 34970
+
+MESSAGE RECEIVE: RCPT TO: guillemro
+ FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 34970
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 34970
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 34970
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 34970
+
+MESSAGE RECEIVE: otra cadena
+ FROM: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 34970
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: guille-manjaro address: 192.168.0.44 Protocol: TCP port: 34970
+
+Completed guille-manjaro port 34970, 6 requests, at Sun Dec  4 17:09:33 2022
+------------------------------------------------------------------------------
+
+Startup from localhost port 56644 at Sun Dec  4 17:50:10 2022
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO usal.es otrasdas
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+
+MESSAGE SEND: 500 Error de sintaxis
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+MESSAGE RECEIVE: MAIL FROM: <fulano@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+MESSAGE RECEIVE: RCPT TO: <guillermo>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+MESSAGE RECEIVE: RCPT TO: guillemro
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+MESSAGE RECEIVE: otra cadena
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+
+MESSAGE SEND: 250 Data finalizado TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 56644
+
+Completed localhost port 56644, 12 requests, at Sun Dec  4 17:50:22 2022
+------------------------------------------------------------------------------
+
+Startup from localhost port 46876 at Sun Dec  4 17:50:45 2022
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO usal.es otrasdas
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+
+MESSAGE SEND: 500 Error de sintaxis
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+MESSAGE RECEIVE: MAIL FROM: <fulano@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+MESSAGE RECEIVE: RCPT TO: <guillermo>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+MESSAGE RECEIVE: RCPT TO: guillemro
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+MESSAGE RECEIVE: otra cadena
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+
+MESSAGE SEND: 250 Data finalizado TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 46876
+
+Completed localhost port 46876, 12 requests, at Sun Dec  4 17:50:57 2022
+------------------------------------------------------------------------------
+
+Startup from localhost port 37978 at Sun Dec  4 20:19:57 2022
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO usal.es otrasdas
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+
+MESSAGE SEND: 500 Error de sintaxis
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+MESSAGE RECEIVE: MAIL FROM: <fulano@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+MESSAGE RECEIVE: RCPT TO: <guillermo>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+MESSAGE RECEIVE: RCPT TO: guillemro
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+MESSAGE RECEIVE: otra cadena
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+
+MESSAGE SEND: 250 Data finalizado TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 37978
+
+Completed localhost port 37978, 12 requests, at Sun Dec  4 20:20:09 2022
+------------------------------------------------------------------------------
+
+Startup from localhost port 48774 at Mon Dec  5 12:24:23 2022
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO usal.es otrasdas
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+
+MESSAGE SEND: 500 Error de sintaxis
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+MESSAGE RECEIVE: MAIL FROM: <fulano@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+MESSAGE RECEIVE: RCPT TO: <guillermo>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+MESSAGE RECEIVE: RCPT TO: guillemro
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+MESSAGE RECEIVE: otra cadena
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+
+MESSAGE SEND: 250 Data finalizado TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+
+MESSAGE SEND: 500 Error de sintaxis TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 48774
+
+Completed localhost port 48774, 12 requests, at Mon Dec  5 12:24:35 2022
+------------------------------------------------------------------------------

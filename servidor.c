@@ -31,6 +31,7 @@ void finalizar(){ FIN = 1; }
 int comprobarCorreo(char *sender);
 int comprobarCorchetes(char *sender);
 void serverTCP(int s, struct sockaddr_in clientaddr_in);
+void serverUDP(int s, char * buffer, struct sockaddr_in clientaddr_in);
 
 void errout(char *hostname)
 {
@@ -138,8 +139,8 @@ int main(int argc, char  *argv[])
 
 		case 0:
 			//esto se cierra porque se supone que todo va a un log.
-			fclose(stdin);
-			fclose(stderr);
+			//fclose(stdin);
+			//fclose(stderr);
 
 			//para prevenir la acumulacion de zombies
 			if ( sigaction(SIGCHLD, &sa, NULL) == -1) {
@@ -211,12 +212,12 @@ int main(int argc, char  *argv[])
 		                    perror(argv[0]);
 		                    printf("%s: recvfrom error\n", argv[0]);
 		                    exit (1);
-		                    }
+		                }
 		                /* Make sure the message received is
 		                * null terminated.
 		                */
 		                buffer[cc]='\0';
-		                //serverUDP (s_UDP, buffer, clientaddr_in);                		
+		                serverUDP (s_UDP, buffer, clientData);                		
                 	}	            	
 	            } 
             } //fin del bucle infinito
@@ -229,17 +230,6 @@ int main(int argc, char  *argv[])
         	exit(0);
 	}
 
-
-	/*
-	while(1){
-		if(-1 == (s= accept(sListen, (struct sockaddr *) &clientData, &addrlen))){
-			perror("accept");
-			exit(EXIT_FAILURE);
-		}
-		//printf("en el bucle");
-		serverTCP(s,clientData);
-	}
-	*/
 	return 0;
 }
 
@@ -553,4 +543,115 @@ int comprobarCorreo(char *sender){
    return resultado;
    //printf("\n[0]:%c [%d]:%c\n",sender[0],i-2,sender[i-2]);
    //-2 porque los ultimos caracteres son \0 y \n
+}
+
+void serverUDP(int s, char * buffer, struct sockaddr_in clientaddr_in){
+	FILE *fp;
+	struct in_addr reqaddr;	/* for requested host's address */
+    struct hostent *hp;		/* pointer to host info for requested host */
+    int nc, errcode;
+    char string[TAM_BUFFER];
+    char *palabra;
+    int final = 0;
+
+    struct addrinfo hints, *res;
+
+	int addrlen;
+    
+    fp = fopen("prueba.txt","a");
+   	addrlen = sizeof(struct sockaddr_in);
+
+    memset (&hints, 0, sizeof (hints));
+    hints.ai_family = AF_INET;
+    //obtengo la ip a partir del hostname
+    errcode = getaddrinfo (buffer, NULL, &hints, &res); 
+    if (errcode != 0){
+		/* Name was not found.  Return a
+		 * special value signifying the error. */
+		reqaddr.s_addr = ADDRNOTFOUND;
+      }
+    else {
+		/* Copy address of host into the return buffer. */
+		reqaddr = ((struct sockaddr_in *) res->ai_addr)->sin_addr;
+	}
+    
+    freeaddrinfo(res);
+
+    printf("envio");
+	nc = sendto (s, &reqaddr, sizeof(struct in_addr),
+			0, (struct sockaddr *)&clientaddr_in, addrlen);
+
+	if ( nc == -1) {
+         perror("serverUDP");
+         printf("%s: sendto error\n", "serverUDP");
+         fprintf(fp,"%s: sendto error\n", "serverUDP");
+         return;
+    }
+
+/***************************************************************
+ * BUCLE DE RECEPCIONES Y RESPUESTAS
+ * *************************************************************/
+
+    //aqui tiene que haber una condicion con alarmas igual que en el cliente
+    //ademas de una condicion con el quit. Cuando llegue quit sal.
+    while(final != 1){
+
+
+    	if(-1 == recvfrom(s, string, TAM_BUFFER, 0, (struct sockaddr*)&clientaddr_in, &addrlen)){
+    		perror("recvfrom");
+			fprintf(stderr,"unable to receive");
+			exit(1);
+		}else{
+			fprintf(stdout,"cadena recibida: %s\n",string);
+		}
+		/***************************************************************
+		 * TRATAMIENTO DE CADENAS
+		 * *************************************************************/
+
+		//divido la cadena en palabras separadas por espacios
+		palabra = strtok(string," ");
+
+		//HELO
+		if(strcmp(palabra,"HELO") == 0){
+			fprintf(stdout,"HELO recibido\n");
+			strcpy(string,"HELO devuelto");
+		}
+
+		//MAIL
+		else if(strcmp(palabra,"MAIL") == 0){
+			fprintf(stdout,"MAIL recibido\n");
+			strcpy(string,"MAIL devuelto");
+
+		//RCPT
+		}else if(strcmp(palabra,"RCPT") == 0){
+			fprintf(stdout,"RCPT recibido\n");
+			strcpy(string, "RCPT devuelto");
+
+		//DATA
+		}else if(strcmp(palabra,"DATA") == 0){
+			fprintf(stdout,"DATA recibido\n");
+			strcpy(string, "DATA devuelto");
+
+		//QUIT
+		}else if(strcmp(palabra,"QUIT") == 0){
+			fprintf(stdout, "QUIT recibido\n");
+			strcpy(string, "QUIT deuvelto");
+			final = 1;
+			break;
+
+		}else{
+			fprintf(stdout,"OTRO\n");
+			strcpy(string,"500 Error de sintaxis");
+		}
+    		
+    	fprintf(stdout,"respondiendo %s\n",string);
+    	nc = sendto (s, string, TAM_BUFFER,0, (struct sockaddr *)&clientaddr_in, addrlen);
+    	if(nc == -1){
+    		perror("server udp");
+    		fprintf(stderr,"error enviando");
+    		exit(1);
+    	}
+    }
+    fprintf(stdout,"saliendo del bucle\n");
+    exit(0);   
 }
