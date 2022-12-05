@@ -402,13 +402,14 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in){
 
 				}else{
 					state.helo = 1;
+					fprintf(stdout,"\nHelo state: %d\n",state.helo);
 					strcpy(buf,"250 OK");
 				}
 			}
 			//solo ha de tener 2 campos.
 
 		//MAIL	
-		}else if(strcmp(palabra,"MAIL") == 0 && state.helo == 1){
+		}else if(strcmp(palabra,"MAIL") == 0 && state.helo){
 			fprintf(stdout,"MAIL recibido\n");
 			palabra = strtok(NULL, " ");
 			if(strcmp(palabra,"FROM:") == 0){
@@ -432,12 +433,13 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in){
 			}
 
 		//RCPT
-		}else if(strcmp(palabra,"RCPT") == 0 && state.helo == 1){
+		}else if(strcmp(palabra,"RCPT") == 0 && state.helo){
 			fprintf(stdout,"RCPT recibido\n");
 			palabra = strtok(NULL," ");
 			if(strcmp(palabra,"TO:") == 0){
 				palabra = strtok(NULL, " ");
-				if(comprobarCorchetes(palabra) && comprobarCorreo(palabra)){
+
+				if(comprobarCorchetes(palabra)  == 1 && comprobarCorreo(palabra) == 1){
 					//no haria falta guardarlos pero..
 					//strcpy(miMail.receptores[miMail.nReceptores],palabra);
 					strcpy(buf,"250 OK\n");
@@ -452,7 +454,7 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in){
 				fprintf(stdout,buf);
 			}
 		///DATA
-		}else if(strcmp(palabra,"DATA\n") == 0){
+		}else if(strcmp(palabra,"DATA\n") == 0 && state.helo){
 			fprintf(stdout,"DATA recibido\n");
 
 			//envio respuesta
@@ -492,7 +494,7 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in){
 
 
 		//QUIT
-		}else if(strcmp(palabra, "QUIT") == 0 && state.helo == 1){
+		}else if(strcmp(palabra, "QUIT") == 0 && state.helo){
 			fprintf(stdout,"QUIT recibido\n");
 			state.helo = 0;
 			strcpy(buf,"221 Cerrando servicio");
@@ -502,6 +504,7 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in){
 		}else if(strcmp(palabra,"\n") == 0){
 
 		}else{
+			fprintf(stdout,"error generico\n");
 			fprintf(stdout, "Error de sintaxis\n");
 			strcpy(buf,"500 Error de sintaxis");		
 		}
@@ -534,9 +537,16 @@ void serverTCP(int s, struct sockaddr_in clientaddr_in){
 
 //comprueba que los correos lleven corchetes
 int comprobarCorchetes(char *sender){
+
+	char aux[TAM_BUFFER];
 	int i=0;
-	for(i=0;sender[i]!='\0';++i);
-	//printf("\n[0]:%c [%d]:%c\n",sender[0],i-2,sender[i-2]);
+	for(i=0;sender[i]!='\0';++i){
+		//fprintf(stdout,"%d: %c",i,sender[i]);
+	}
+
+	strcpy(aux,sender);
+	strtok(aux,"\n");
+	//fprintf(stdout,"\n[0]:%c [%d]:%c\n",sender[0],i-2,sender[i-2]);
 	//-2 porque los ultimos caracteres son \0 y \n
 	if(sender[0] == '<' && sender[i-2] == '>')
 		return 1;
@@ -571,6 +581,7 @@ int comprobarCorreo(char *sender){
          //printf("ya habia punto o no habia arroba antes");
       }
    }
+   //fprintf(stdout,"\nresultado correo: %d\n",resultado);
    return resultado;
    //printf("\n[0]:%c [%d]:%c\n",sender[0],i-2,sender[i-2]);
    //-2 porque los ultimos caracteres son \0 y \n
@@ -589,10 +600,15 @@ void serverUDP(int s, char * buffer, struct sockaddr_in clientaddr_in){
     int status;
 	int reqcnt = 0;		//numero de requests
 
+	mailState state;
+
     struct addrinfo hints, *res;
 
 	int addrlen;
     
+	//pongo la estructura de control del mail a 0
+	state.helo=0; state.mail=0; state.data=0; state.rcpt=0;
+
     //abro el fichero de log
     fp = fopen("prueba.txt","a");
    	addrlen = sizeof(struct sockaddr_in);
@@ -647,7 +663,7 @@ void serverUDP(int s, char * buffer, struct sockaddr_in clientaddr_in){
 			fprintf(stderr,"unable to receive");
 			exit(1);
 		}else{
-			fprintf(stdout,"cadena recibida: %s\n",string);
+			fprintf(stdout,"cadena recibida: %s",string);
 			reqcnt++;
 		}
 		/***************************************************************
@@ -658,32 +674,133 @@ void serverUDP(int s, char * buffer, struct sockaddr_in clientaddr_in){
 
 		//divido la cadena en palabras separadas por espacios
 		palabra = strtok(string," ");
-
 		//HELO
 		if(strcmp(palabra,"HELO") == 0){
 			fprintf(stdout,"HELO recibido\n");
-			strcpy(string,"HELO devuelto");
+			//descomponemos el HELO para verificar su formato
+
+			//verifico que despues de HELO va el sender
+			palabra = strtok(NULL," ");
+			if(palabra != NULL){
+				//aqui se deberia comprobar el sender de algun modo
+				palabra = strtok(NULL, " ");
+				if(palabra != NULL){
+					//error, solo se espera un campo. Devuelvo error
+					strcpy(string,"500 Error de sintaxis");
+					fprintf(stdout,string);
+				}else{
+					state.helo = 1;
+					strcpy(string,"250 OK");
+				}
+			}
+
 		}
 
 		//MAIL
 		else if(strcmp(palabra,"MAIL") == 0){
 			fprintf(stdout,"MAIL recibido\n");
-			strcpy(string,"MAIL devuelto");
+			palabra = strtok(NULL," ");
+			if(strcmp(palabra,"FROM:") == 0){
+				//se ha recibido from. La sintaxis es correcta (de momento)
+				//ahora verificamos el sender
+				palabra = strtok(NULL," ");
+				if(palabra != NULL){
+					//comprobamos el formato del sender
+					if(comprobarCorchetes(palabra) == 1 && comprobarCorreo(palabra) == 1){
+						fprintf(stdout,"emisor: %s",palabra);
+						strcpy(string,"250 OK");
+					}else{
+						strcpy(string,"500 Error de sintaxis");
+						fprintf(stdout,string);
+					}
+				}else{
+					strcpy(string,"500 Error de sintaxis");
+					fprintf(stdout,string);
+				}
+			}
 
 		//RCPT
 		}else if(strcmp(palabra,"RCPT") == 0){
 			fprintf(stdout,"RCPT recibido\n");
-			strcpy(string, "RCPT devuelto");
+			palabra = strtok(NULL," ");
+			if(strcmp(palabra,"TO:") == 0){
+				fprintf(stdout,"TO: recibido\n");
+				palabra = strtok(NULL," ");
+				fprintf(stdout,"correo: %s",palabra);
+				if(comprobarCorchetes(palabra) == 1 && comprobarCorreo(palabra) == 1){
+					//compruebo si hay mas cosas en cuyo caso la orden es incorrecta
+					if(NULL != (palabra = strtok(NULL," "))){
+						strcpy(string,"500 Error de sintaxis");
+						fprintf(stdout,string);
+					}else{
+						strcpy(string,"250 OK");
+						fprintf(stdout,string);
+					}
+				}else{
+					strcpy(string,"500 Error de sintaxis");
+					fprintf(stdout,string);
+				}
+			}else{
+				strcpy(string,"500 Error de sintaxis");
+				fprintf(stdout,string);
+			}
 
 		//DATA
-		}else if(strcmp(palabra,"DATA") == 0){
+		}else if(strcmp(palabra,"DATA\n") == 0){
 			fprintf(stdout,"DATA recibido\n");
-			strcpy(string, "DATA devuelto");
+			strcpy(string,"354 Comenzando con el texto del correo, finalice con .");
+			fprintf(stdout,string);
+
+			//envio la respuesta
+	    	nc = sendto (s, string, TAM_BUFFER,0, (struct sockaddr *)&clientaddr_in, addrlen);
+	    	if(nc == -1){
+	    		perror("server udp");
+	    		fprintf(stderr,"error enviando");
+	    		exit(1);
+	    	}
+
+	    	//comienza el bucle de procesamiento de data
+	    	//este bucle esta mal. Se sale con el break como parche.
+	    	do{
+		    	if(-1 == recvfrom(s, string, TAM_BUFFER, 0, (struct sockaddr*)&clientaddr_in, &addrlen)){
+		    		perror("recvfrom");
+					fprintf(stderr,"unable to receive");
+					exit(1);
+				}else{
+					fprintf(stdout,"cadena recibida: %s",string);
+					reqcnt++;
+				}
+
+				if(strcmp(string,".\n") == 0){
+					strcpy(string,"DATA finalizado");
+					fprintf(stdout,"enviando: %s\n",string);
+					nc = sendto (s, string, TAM_BUFFER,0, (struct sockaddr *)&clientaddr_in, addrlen);
+			    	if(nc == -1){
+			    		perror("server udp");
+			    		fprintf(stderr,"error enviando");
+			    		exit(1);
+			    	}
+			    	break;	
+				}else{
+					strcpy(string,"250 DATA OK");
+					fprintf(stdout,"enviando: %s\n",string);
+					nc = sendto (s, string, TAM_BUFFER,0, (struct sockaddr *)&clientaddr_in, addrlen);
+			    	if(nc == -1){
+			    		perror("server udp");
+			    		fprintf(stderr,"error enviando");
+			    		exit(1);
+			    	}						
+				}
+
+	    	}while(!(strcmp(string, ".\n") == 0));
+	    	fprintf(stdout,"salgo del bucle");
+
 
 		//QUIT
 		}else if(strcmp(palabra,"QUIT") == 0){
 			fprintf(stdout, "QUIT recibido\n");
-			strcpy(string, "QUIT deuvelto");
+			state.helo = 0;
+			strcpy(string, "221 Cerrando servicio");
 			final = 1;
 			//break;
 
@@ -692,7 +809,7 @@ void serverUDP(int s, char * buffer, struct sockaddr_in clientaddr_in){
 			strcpy(string,"500 Error de sintaxis");
 		}
     		
-    	fprintf(stdout,"respondiendo %s\n",string);
+    	fprintf(stdout,"respondiendo %s\n\n",string);
     	nc = sendto (s, string, TAM_BUFFER,0, (struct sockaddr *)&clientaddr_in, addrlen);
     	if(nc == -1){
     		perror("server udp");
@@ -708,14 +825,6 @@ void serverUDP(int s, char * buffer, struct sockaddr_in clientaddr_in){
 		hostname, ntohs(clientaddr_in.sin_port), reqcnt, (char *) ctime(&timevar));
 
 	fprintf(stdout,string);
-
-	/*
-	nc = sendto (s, string, TAM_BUFFER,0, (struct sockaddr *)&clientaddr_in, addrlen);
-	if(nc == -1){
-		perror("server udp");
-		fprintf(stderr,"error enviando");
-		exit(1);
-	}*/
 
     exit(0);   
 }

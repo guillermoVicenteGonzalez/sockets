@@ -45,11 +45,12 @@
  			- [x] funcionalidad basica
  			- [ ] cada peticion en una linea
  			- [ ] fechas
+ 		- [ ] comprobar que el host de HELO es mi host
 
  	- [ ] servidor udp
  		- [ ] funcionalidad basica
  			- [x] bucle de recepcion
- 			- [ ] tratamiento completo de cadenas
+ 			- [x] tratamiento completo de cadenas
  			- [ ] alarmas e intentos
  		- [ ] concurrencia
  			- [x] socket de escucha
@@ -59,3 +60,6 @@
  			- [ ] funcionalidad basica
  			- [ ] cada peticion en una linea
  			- [ ] fechas
+ 		- [ ] comprobar que el host de HELO es mi host
+ 		
+ - [ ] pruebas en nogal
