@@ -1,0 +1,10 @@
+HELO localhost
+MAIL FROM: <guillermovg@usal.es>
+RCPT TO: <juanito@gmail.com>
+RCPT TO: <maillo@gmail.com>
+DATA
+esto es un correo de prueba
+en teoria deberia funcionar
+si pongo un mensaje muy largo deberia fragmentarlo correctamente
+.
+QUIT
