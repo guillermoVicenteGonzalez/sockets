@@ -80,3 +80,17 @@ Jorge Prieto de la Cruz
  		
  - [ ] pruebas en nogal
  - [ ] comentar y limpiar el codigo 
+
+## para Jorge
+Estaria cojonudo que hicieses el cliente unificado y el fichero de log del cliente. Para el fichero de log del cliente simplemente hay que registrar cada envio y recepcion que hace. con fopen, fgets etc.. si en el enunciado dice que hay que indicar mas cosas fijate en como lo hago en el server (busca los cachos donde haya fputs).
+
+Ya que estas estaria cojonudo que probases a ejecutar y me dijeras si va todo como dice en el enunciado. (EN el enunciado no imprimen por pantalla, pero para las pruebas lo he dejado activo. En el servidor hay dos lineas comentadas para hacerlo facil)
+
+```c
+	fclose(stdin);
+	fclose(stderr);
+```
+
+Si te sobra tiempo ya echale un ojo al resto de cosas por hacer, pero pensaba hacerlo yo vaya.
+
+Trabaja siempre en feature btw, y cuando tengas algo solido haces merge a main. Como vas a trabajar en un fichero distinto no deberia haber problema pero just in case.
