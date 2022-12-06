@@ -1,4 +1,4 @@
-HELO usal.es otrasdas
+HELO usal.es
 MAIL FROM: <fulano@gmail.com>
 RCPT TO: <guillermo>
 RCPT TO: guillemro

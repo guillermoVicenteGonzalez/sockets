@@ -229,32 +229,7 @@ char *argv[];
         }
     }while(!feof(fp));
 
-/*
-    while(1){
-        printf("envio buenas tardes\n");
-        strcpy(string,"buenas tardes");
-        if (sendto (s, string, TAM_BUFFER, 0, (struct sockaddr *)&servaddr_in,
-            sizeof(struct sockaddr_in)) == -1) {
-            perror(argv[0]);
-            fprintf(stderr, "%s: unable to send request\n", argv[0]);
-            exit(1);
-        }
 
-        printf("recibo\n");
-        if (recvfrom (s, string, TAM_BUFFER, 0,(struct sockaddr *)&servaddr_in, &addrlen) == -1) {
-            if (errno == EINTR) {
-
-                 printf("attempt %d (retries %d).\n", n_retry, RETRIES);
-                 n_retry--; 
-            }else {
-                printf("Unable to get response from");
-                exit(1); 
-            }
-        }else{
-            fprintf(stdout,"recibido:%s\n",string);
-        }
-    }
-*/
     if (n_retry == 0) {
        printf("Unable to get response from");
        printf(" %s after %d attempts.\n", argv[1], RETRIES);

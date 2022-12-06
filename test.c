@@ -1,9 +1,10 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#define TAM_BUFFER 512
 
 //fgets(palabra,10000,fp); lee una linea completa
-
+int comprobarCorchetes(char *sender);
 int comprobarCorreo(char *sender);
 int main(int argc, char *argv[])
 {
@@ -38,11 +39,13 @@ int main(int argc, char *argv[])
       }
    }
 */
-   printf("%d\n",comprobarCorreo("guillermo@usal.es"));
-   printf("%d\n",comprobarCorreo("guillermousales"));
-   printf("%d\n",comprobarCorreo("guill.ermo@usal.es"));
-   printf("%d\n",comprobarCorreo("guillermo@usal@españa.com"));
-   printf("%d\n",comprobarCorreo("guillermo.usal@es"));
+   printf("%d %d\n",comprobarCorreo("<guillermo@usal.es>\n"), comprobarCorchetes("<guillermo@usal.es>"));
+   printf("%d %d\n",comprobarCorreo("guillermousales\n"),comprobarCorchetes("guillermousales"));
+   printf("%d %d\n",comprobarCorreo("guill.ermo@usal.es\n"),comprobarCorchetes("guill.ermo@usal.es"));
+   printf("%d %d\n",comprobarCorreo("guillermo@usal@españa.com\n"), comprobarCorchetes("guillermo@usal@españa.com"));
+   printf("%d %d\n",comprobarCorreo("guillermo.usal@es\n"), comprobarCorchetes("guillermo.usal@es"));
+   printf("%d\n",comprobarCorreo("juanito@gmail.com"));
+   printf("%d\n");
 
    fclose(fp);
    printf("\n");
@@ -80,9 +83,15 @@ int comprobarCorreo(char *sender){
 }
 
 int comprobarCorchetes(char *sender){
+   char aux[TAM_BUFFER];
    int i=0;
-   for(i=0;sender[i]!='\0';++i);
-   //printf("\n[0]:%c [%d]:%c\n",sender[0],i-2,sender[i-2]);
+   for(i=0;sender[i]!='\0';++i){
+      fprintf(stdout,"%d: %c",i,sender[i]);
+   }
+
+   strcpy(aux,sender);
+   strtok(aux,"\n");
+   fprintf(stdout,"\n[0]:%c [%d]:%c\n",sender[0],i-2,sender[i-2]);
    //-2 porque los ultimos caracteres son \0 y \n
    if(sender[0] == '<' && sender[i-2] == '>')
       return 1;
