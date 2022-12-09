@@ -32,7 +32,7 @@ Jorge Prieto de la Cruz
  - [x] Fragmentar data si pesa mas de 516 (simplemente fgets tambuffer??) ?????
 
  - [ ] cliente
- 	 - [ ] correcta invocacion (tcp + udp en uno)
+ 	 - [x] correcta invocacion (tcp + udp en uno)
 
 	 - [ ] cliente tcp
 	 	- [x] funcionalidad basica
