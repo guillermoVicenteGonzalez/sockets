@@ -149,8 +149,9 @@ int main(int argc, char  *argv[])
 
 		case 0:
 			//esto se cierra porque se supone que todo va a un log.
-			//fclose(stdin);
-			//fclose(stderr);
+			fclose(stdin);
+			fclose(stdout);
+			fclose(stderr);
 
 			//para prevenir la acumulacion de zombies
 			if ( sigaction(SIGCHLD, &sa, NULL) == -1) {
