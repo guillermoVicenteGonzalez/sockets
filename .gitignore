@@ -53,8 +53,8 @@ dkms.conf
 
 
 #propio
-.log
-.txt
+*.log
+*.txt
 *
 !*.*
 !LICENSE

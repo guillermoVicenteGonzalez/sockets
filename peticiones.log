@@ -544,3 +544,611 @@ MESSAGE SEND: 221 Cerrando servicio TO: hostname: localhost address:  Protocol: 
 
 Completed localhost port 51564, 10 requests, at Tue Dec  6 17:09:32 2022
 ------------------------------------------------------------------------------
+
+Startup from localhost port 44100 at Thu Dec  8 22:05:15 2022
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO localhost
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 44100 time: Thu Dec  8 22:05:16 2022
+
+
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 44100 time: Thu Dec  8 22:05:16 2022
+
+
+MESSAGE RECEIVE: MAIL FROM: <guillermovg@usal.es>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 44100 time: Thu Dec  8 22:05:17 2022
+
+
+
+MESSAGE SEND: 250 OK
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 44100 time: Thu Dec  8 22:05:17 2022
+
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 44100 time: Thu Dec  8 22:05:18 2022
+
+
+
+MESSAGE SEND: 250 OK
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 44100 time: Thu Dec  8 22:05:18 2022
+
+
+MESSAGE RECEIVE: RCPT TO: <maillo@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 44100 time: Thu Dec  8 22:05:19 2022
+
+
+
+MESSAGE SEND: 250 OK
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 44100 time: Thu Dec  8 22:05:19 2022
+
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 44100 time: Thu Dec  8 22:05:20 2022
+
+
+
+MESSAGE SEND: 250 Data finalizado TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 44100 time: Thu Dec  8 22:05:24 2022
+
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 44100 time: Thu Dec  8 22:05:25 2022
+
+
+
+MESSAGE SEND: 221 Cerrando servicio TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 44100 time: Thu Dec  8 22:05:25 2022
+
+
+Completed localhost port 44100, 10 requests, at Thu Dec  8 22:05:25 2022
+------------------------------------------------------------------------------
+
+Startup from localhost port 36393 at Fri Jan 23 15:37:52 1970
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO localhost
+ FROM: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:05 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:06 2022
+
+MESSAGE RECEIVE: MAIL FROM: <guillermovg@usal.es>
+ FROM: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:06 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:07 2022
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:07 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:08 2022
+
+MESSAGE RECEIVE: RCPT TO: <maillo@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:08 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:09 2022
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:09 2022
+
+MESSAGE SEND: 354 Comenzando con el texto del correo, finalice con . TO: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:09 2022
+
+MESSAGE RECEIVE: esto es un correo de prueba
+ FROM: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:09 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:09 2022
+
+MESSAGE RECEIVE: en teoria deberia funcionar
+ FROM: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:09 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:09 2022
+
+MESSAGE RECEIVE: si pongo un mensaje muy largo deberia fragmentarlo correctamente
+ FROM: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:09 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:09 2022
+
+MESSAGE RECEIVE: .
+ FROM: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:09 2022
+
+MESSAGE SEND: DATA finalizado TO: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:10 2022
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:10 2022
+
+MESSAGE SEND: 221 Cerrando servicio TO: hostname: localhost address:  Protocol: UDP port: 36393 time: Fri Dec  9 17:19:11 2022
+
+Completed localhost port 36393, 10 requests, at Fri Dec  9 17:19:11 2022
+------------------------------------------------------------------------------
+
+Startup from localhost port 40286 at Fri Dec  9 17:23:31 2022
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO localhost
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 40286 time: Fri Dec  9 17:23:32 2022
+
+
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 40286 time: Fri Dec  9 17:23:32 2022
+
+
+MESSAGE RECEIVE: MAIL FROM: <guillermovg@usal.es>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 40286 time: Fri Dec  9 17:23:33 2022
+
+
+
+MESSAGE SEND: 250 OK
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 40286 time: Fri Dec  9 17:23:33 2022
+
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 40286 time: Fri Dec  9 17:23:34 2022
+
+
+
+MESSAGE SEND: 250 OK
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 40286 time: Fri Dec  9 17:23:34 2022
+
+
+MESSAGE RECEIVE: RCPT TO: <maillo@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 40286 time: Fri Dec  9 17:23:35 2022
+
+
+
+MESSAGE SEND: 250 OK
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 40286 time: Fri Dec  9 17:23:35 2022
+
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 40286 time: Fri Dec  9 17:23:36 2022
+
+
+
+MESSAGE SEND: 250 Data finalizado TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 40286 time: Fri Dec  9 17:23:40 2022
+
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 40286 time: Fri Dec  9 17:23:41 2022
+
+
+
+MESSAGE SEND: 221 Cerrando servicio TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 40286 time: Fri Dec  9 17:23:41 2022
+
+
+Completed localhost port 40286, 10 requests, at Fri Dec  9 17:23:41 2022
+------------------------------------------------------------------------------
+
+Startup from localhost port 46493 at Fri Jan 23 15:37:52 1970
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO localhost
+ FROM: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:03 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:04 2022
+
+MESSAGE RECEIVE: MAIL FROM: <guillermovg@usal.es>
+ FROM: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:04 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:05 2022
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:05 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:06 2022
+
+MESSAGE RECEIVE: RCPT TO: <maillo@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:06 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:07 2022
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:07 2022
+
+MESSAGE SEND: 354 Comenzando con el texto del correo, finalice con . TO: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:07 2022
+
+MESSAGE RECEIVE: esto es un correo de prueba
+ FROM: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:07 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:07 2022
+
+MESSAGE RECEIVE: en teoria deberia funcionar
+ FROM: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:07 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:07 2022
+
+MESSAGE RECEIVE: si pongo un mensaje muy largo deberia fragmentarlo correctamente
+ FROM: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:07 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:07 2022
+
+MESSAGE RECEIVE: .
+ FROM: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:07 2022
+
+MESSAGE SEND: DATA finalizado TO: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:08 2022
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:08 2022
+
+MESSAGE SEND: 221 Cerrando servicio TO: hostname: localhost address:  Protocol: UDP port: 46493 time: Fri Dec  9 17:49:09 2022
+
+Completed localhost port 46493, 10 requests, at Fri Dec  9 17:49:09 2022
+------------------------------------------------------------------------------
+
+Startup from guille-manjaro port 59766 at Fri Jan 23 15:37:52 1970
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO localhost
+ FROM: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:49:56 2022
+
+MESSAGE SEND: 250 OK TO: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:49:57 2022
+
+MESSAGE RECEIVE: MAIL FROM: <guillermovg@usal.es>
+ FROM: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:49:57 2022
+
+MESSAGE SEND: 250 OK TO: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:49:58 2022
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:49:58 2022
+
+MESSAGE SEND: 250 OK TO: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:49:59 2022
+
+MESSAGE RECEIVE: RCPT TO: <maillo@gmail.com>
+ FROM: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:49:59 2022
+
+MESSAGE SEND: 250 OK TO: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:50:00 2022
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:50:00 2022
+
+MESSAGE SEND: 354 Comenzando con el texto del correo, finalice con . TO: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:50:00 2022
+
+MESSAGE RECEIVE: esto es un correo de prueba
+ FROM: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:50:00 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:50:00 2022
+
+MESSAGE RECEIVE: en teoria deberia funcionar
+ FROM: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:50:00 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:50:00 2022
+
+MESSAGE RECEIVE: si pongo un mensaje muy largo deberia fragmentarlo correctamente
+ FROM: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:50:00 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:50:00 2022
+
+MESSAGE RECEIVE: .
+ FROM: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:50:00 2022
+
+MESSAGE SEND: DATA finalizado TO: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:50:01 2022
+
+MESSAGE RECEIVE: QUIT FROM: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:50:01 2022
+
+MESSAGE SEND: 221 Cerrando servicio TO: hostname: guille-manjaro address:  Protocol: UDP port: 59766 time: Fri Dec  9 17:50:02 2022
+
+Completed guille-manjaro port 59766, 10 requests, at Fri Dec  9 17:50:02 2022
+------------------------------------------------------------------------------
+
+Startup from localhost port 34855 at Fri Jan 23 15:37:52 1970
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO localhost
+ FROM: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:10 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:11 2022
+
+MESSAGE RECEIVE: MAIL FROM: <guillermovg@usal.es>
+ FROM: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:11 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:12 2022
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:12 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:13 2022
+
+MESSAGE RECEIVE: RCPT TO: <maillo@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:13 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:14 2022
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:14 2022
+
+MESSAGE SEND: 354 Comenzando con el texto del correo, finalice con . TO: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:14 2022
+
+MESSAGE RECEIVE: esto es un correo de prueba
+ FROM: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:14 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:14 2022
+
+MESSAGE RECEIVE: en teoria deberia funcionar
+ FROM: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:14 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:14 2022
+
+MESSAGE RECEIVE: si pongo un mensaje muy largo deberia fragmentarlo correctamente
+ FROM: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:14 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:14 2022
+
+MESSAGE RECEIVE: .
+ FROM: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:14 2022
+
+MESSAGE SEND: DATA finalizado TO: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:15 2022
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:15 2022
+
+MESSAGE SEND: 221 Cerrando servicio TO: hostname: localhost address:  Protocol: UDP port: 34855 time: Fri Dec  9 17:50:16 2022
+
+Completed localhost port 34855, 10 requests, at Fri Dec  9 17:50:16 2022
+------------------------------------------------------------------------------
+
+Startup from localhost port 44215 at Fri Jan 23 15:37:52 1970
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO localhost
+ FROM: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:03 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:04 2022
+
+MESSAGE RECEIVE: MAIL FROM: <guillermovg@usal.es>
+ FROM: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:04 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:05 2022
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:05 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:06 2022
+
+MESSAGE RECEIVE: RCPT TO: <maillo@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:06 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:07 2022
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:07 2022
+
+MESSAGE SEND: 354 Comenzando con el texto del correo, finalice con . TO: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:07 2022
+
+MESSAGE RECEIVE: esto es un correo de prueba
+ FROM: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:07 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:07 2022
+
+MESSAGE RECEIVE: en teoria deberia funcionar
+ FROM: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:07 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:07 2022
+
+MESSAGE RECEIVE: si pongo un mensaje muy largo deberia fragmentarlo correctamente
+ FROM: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:07 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:07 2022
+
+MESSAGE RECEIVE: .
+ FROM: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:07 2022
+
+MESSAGE SEND: DATA finalizado TO: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:08 2022
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:08 2022
+
+MESSAGE SEND: 221 Cerrando servicio TO: hostname: localhost address:  Protocol: UDP port: 44215 time: Fri Dec  9 17:54:09 2022
+
+Completed localhost port 44215, 10 requests, at Fri Dec  9 17:54:09 2022
+------------------------------------------------------------------------------
+
+Startup from localhost port 45192 at Fri Jan 23 15:37:52 1970
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO localhost
+ FROM: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:30 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:31 2022
+
+MESSAGE RECEIVE: MAIL FROM: <guillermovg@usal.es>
+ FROM: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:31 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:32 2022
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:32 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:33 2022
+
+MESSAGE RECEIVE: RCPT TO: <maillo@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:33 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:34 2022
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:34 2022
+
+MESSAGE SEND: 354 Comenzando con el texto del correo, finalice con . TO: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:34 2022
+
+MESSAGE RECEIVE: esto es un correo de prueba
+ FROM: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:34 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:34 2022
+
+MESSAGE RECEIVE: en teoria deberia funcionar
+ FROM: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:34 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:34 2022
+
+MESSAGE RECEIVE: si pongo un mensaje muy largo deberia fragmentarlo correctamente
+ FROM: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:34 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:34 2022
+
+MESSAGE RECEIVE: .
+ FROM: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:34 2022
+
+MESSAGE SEND: DATA finalizado TO: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:35 2022
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:35 2022
+
+MESSAGE SEND: 221 Cerrando servicio TO: hostname: localhost address:  Protocol: UDP port: 45192 time: Fri Dec  9 17:54:36 2022
+
+Completed localhost port 45192, 10 requests, at Fri Dec  9 17:54:36 2022
+------------------------------------------------------------------------------
+
+Startup from localhost port 49996 at Fri Jan 23 15:37:52 1970
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO localhost
+ FROM: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:49 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:50 2022
+
+MESSAGE RECEIVE: MAIL FROM: <guillermovg@usal.es>
+ FROM: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:50 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:51 2022
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:51 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:52 2022
+
+MESSAGE RECEIVE: RCPT TO: <maillo@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:52 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:53 2022
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:53 2022
+
+MESSAGE SEND: 354 Comenzando con el texto del correo, finalice con . TO: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:53 2022
+
+MESSAGE RECEIVE: esto es un correo de prueba
+ FROM: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:53 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:53 2022
+
+MESSAGE RECEIVE: en teoria deberia funcionar
+ FROM: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:53 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:53 2022
+
+MESSAGE RECEIVE: si pongo un mensaje muy largo deberia fragmentarlo correctamente
+ FROM: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:53 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:53 2022
+
+MESSAGE RECEIVE: .
+ FROM: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:53 2022
+
+MESSAGE SEND: DATA finalizado TO: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:54 2022
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:54 2022
+
+MESSAGE SEND: 221 Cerrando servicio TO: hostname: localhost address:  Protocol: UDP port: 49996 time: Fri Dec  9 17:58:55 2022
+
+Completed localhost port 49996, 10 requests, at Fri Dec  9 17:58:55 2022
+------------------------------------------------------------------------------
+
+Startup from localhost port 59217 at Fri Jan 23 15:37:52 1970
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO localhost
+ FROM: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:31 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:32 2022
+
+MESSAGE RECEIVE: MAIL FROM: <guillermovg@usal.es>
+ FROM: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:32 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:33 2022
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:33 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:34 2022
+
+MESSAGE RECEIVE: RCPT TO: <maillo@gmail.com>
+ FROM: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:34 2022
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:35 2022
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:35 2022
+
+MESSAGE SEND: 354 Comenzando con el texto del correo, finalice con . TO: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:35 2022
+
+MESSAGE RECEIVE: esto es un correo de prueba
+ FROM: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:35 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:35 2022
+
+MESSAGE RECEIVE: en teoria deberia funcionar
+ FROM: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:35 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:35 2022
+
+MESSAGE RECEIVE: si pongo un mensaje muy largo deberia fragmentarlo correctamente
+ FROM: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:35 2022
+
+MESSAGE SEND: 250 DATA OK TO: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:35 2022
+
+MESSAGE RECEIVE: .
+ FROM: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:35 2022
+
+MESSAGE SEND: DATA finalizado TO: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:36 2022
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:36 2022
+
+MESSAGE SEND: 221 Cerrando servicio TO: hostname: localhost address:  Protocol: UDP port: 59217 time: Fri Dec  9 18:12:37 2022
+
+Completed localhost port 59217, 10 requests, at Fri Dec  9 18:12:37 2022
+------------------------------------------------------------------------------
+
+Startup from localhost port 59276 at Fri Dec  9 18:18:52 2022
+-------------------------------------------------------------------
+
+MESSAGE RECEIVE: HELO localhost
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 59276 time: Fri Dec  9 18:18:53 2022
+
+
+
+MESSAGE SEND: 250 OK TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 59276 time: Fri Dec  9 18:18:53 2022
+
+
+MESSAGE RECEIVE: MAIL FROM: <guillermovg@usal.es>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 59276 time: Fri Dec  9 18:18:54 2022
+
+
+
+MESSAGE SEND: 250 OK
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 59276 time: Fri Dec  9 18:18:54 2022
+
+
+MESSAGE RECEIVE: RCPT TO: <juanito@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 59276 time: Fri Dec  9 18:18:55 2022
+
+
+
+MESSAGE SEND: 250 OK
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 59276 time: Fri Dec  9 18:18:55 2022
+
+
+MESSAGE RECEIVE: RCPT TO: <maillo@gmail.com>
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 59276 time: Fri Dec  9 18:18:56 2022
+
+
+
+MESSAGE SEND: 250 OK
+ TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 59276 time: Fri Dec  9 18:18:56 2022
+
+
+MESSAGE RECEIVE: DATA
+ FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 59276 time: Fri Dec  9 18:18:57 2022
+
+
+
+MESSAGE SEND: 250 Data finalizado TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 59276 time: Fri Dec  9 18:19:01 2022
+
+
+MESSAGE RECEIVE: QUIT FROM: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 59276 time: Fri Dec  9 18:19:02 2022
+
+
+
+MESSAGE SEND: 221 Cerrando servicio TO: hostname: localhost address: 127.0.0.1 Protocol: TCP port: 59276 time: Fri Dec  9 18:19:02 2022
+
+
+Completed localhost port 59276, 10 requests, at Fri Dec  9 18:19:02 2022
+------------------------------------------------------------------------------
