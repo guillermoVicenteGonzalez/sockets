@@ -342,7 +342,7 @@ void clientUDP(char *ruta, char *servidor){
     do{
         fgets(string,TAM_BUFFER,fp);
         fprintf(stdout,"enviando: %s",string);
-        while(n_retry > 0){
+        //while(n_retry > 0){
             //envio mensaje
             if (sendto (s, string, TAM_BUFFER, 0, (struct sockaddr *)&servaddr_in, sizeof(struct sockaddr_in)) == -1) {
                 //perror(argv[0]);
@@ -378,8 +378,8 @@ void clientUDP(char *ruta, char *servidor){
                 break;  
             }
 
-        }
-    }while(!feof(fp));
+        //}
+    }while(!feof(fp) && n_retry > 0);
 
 
     if (n_retry == 0) {
