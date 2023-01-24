@@ -1,8 +1,8 @@
 /**
  * servidor.c
  * Autores:
- * Guillermo Vicente Gonzalez DNI 70908566A
- * Jorge Prieto de la Cruz DNI
+ * Guillermo Vicente Gonzalez 
+ * Jorge Prieto de la Cruz 
  **/ 
 
 #include <sys/types.h>
