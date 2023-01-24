@@ -1,3 +1,10 @@
+/**
+ * servidor.c
+ * Autores:
+ * Guillermo Vicente Gonzalez 
+ * Jorge Prieto de la Cruz 
+ **/ 
+
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/errno.h>
