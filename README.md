@@ -1,9 +1,5 @@
 # sockets
 
-## Autores:
-Guillermo Vicente González
-
-
 ## modo de ejecucion
 
 ```bash
