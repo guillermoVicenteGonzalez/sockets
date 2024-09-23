@@ -2,7 +2,7 @@
 
 ## Autores:
 Guillermo Vicente González
-Jorge Prieto de la Cruz
+
 
 ## modo de ejecucion
 
